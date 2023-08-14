@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body5 %}
+    <h2>Add your wishes !</h2>
+    <div class="container">
+        {% form_theme wishForm'bootstrap_5_layout.html.twig' %}
+        {{ form(wishForm) }}
+    </div>
+{% endblock %}
+

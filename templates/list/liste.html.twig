@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body3 %}
+    <div id="main">
+        <p>All Wishes !</p>
+            {% for wish in wishes %}
+                <a href="{{ path('liste_detail', {'wish': wish.id }) }}"><div>{{ wish.title }} ({{ wish.categories.name }}) </div></a>
+            {% endfor %}
+    </div>
+
+    {#    Appel de l'API#}
+    <div class="blagues">
+        <p>{{ blagues["joke"] }}</p>
+    </div>
+{% endblock %}
+

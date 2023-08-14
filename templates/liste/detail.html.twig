@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body4 %}
+    <h2>All Wishes !</h2>
+    <div>
+        <p>Titre: {{ wishes.title }}</p>
+        <p>Categories: {{ wishes.categories.name }}</p>
+        <p>Description: {{ wishes.description }}</p>
+        <p>Auteur : {{ wishes.authors.name }}</p>
+        <p>Date de création : {{ wishes.dateCreated | date('d/m/Y H:i') }}</p>
+        <a href="{{ path('supprimer', {'wish': wishes.id }) }}">Supprimer le wish</a>
+    </div>
+{% endblock %}
+

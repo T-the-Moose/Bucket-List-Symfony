@@ -1,0 +1,23 @@
+[
+  {
+    "firstname": "Fabien",
+    "lastname": "Potencier",
+    "dateOfBirth": "1979-02-22",
+    "picture": "https://pbs.twimg.com/profile_images/1126770148092698625/nI58pL5O_200x200.png",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cumque facilis harum id ipsam necessitatibus veniam! Adipisci alias delectus harum impedit ipsum, iste laboriosam natus possimus provident ratione velit voluptatibus? "
+  },
+  {
+    "firstname": "Alan",
+    "lastname": "Turing",
+    "dateOfBirth": "1912-06-23",
+    "picture": "https://www.babelio.com/users/AVT_Alan-Turing_3688.jpg",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cumque facilis harum id ipsam necessitatibus veniam! Adipisci alias delectus harum impedit ipsum, iste laboriosam natus possimus provident ratione velit voluptatibus? "
+  },
+  {
+    "firstname": "Alexandre",
+    "lastname": "Astier",
+    "dateOfBirth": "1974-06-16",
+    "picture": "https://www.raindogprod.com/wp-content/uploads/2019/06/Vignette_Alexandre-Astier-DSC_0483-rt.jpg",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cumque facilis harum id ipsam necessitatibus veniam! Adipisci alias delectus harum impedit ipsum, iste laboriosam natus possimus provident ratione velit voluptatibus? "
+  }
+]

@@ -5,17 +5,32 @@ services:
   database:
     image: postgres:${POSTGRES_VERSION:-15}-alpine
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_DB: bucket-list-postgres
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: TonyPrioux2023
+      POSTGRES_USER: postgres_utilisateur
     volumes:
       - database_data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
 
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: bucket-list-mysql
+      MYSQL_USER: mysql_utilisateur
+      MYSQL_PASSWORD: TonyPrioux2023
+      MYSQL_ROOT_PASSWORD: TonyPrioux2023
+    expose:
+      - "3306"
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql_volume:/var/lib/mysql
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
+  mysql_volume:
 ###< doctrine/doctrine-bundle ###

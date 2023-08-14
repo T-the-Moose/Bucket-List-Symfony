@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    font-family: 'Borel', cursive;
+}
+
+header {
+    background-color: #658c2d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding : 2em 0 1em 0;
+}
+
+#img {
+    width: 3em;
+    height: 3em;
+    margin-bottom: 3em;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 10px; /* Espacement entre l'image et le titre */
+}
+
+#nav a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
+
+main {
+    background-color: #f3d9d5;
+    height: 75vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+    height: 3em;
+    padding: 1em;
+}
+
+#nav a:not(:last-child) {
+
+    margin-right: 3em;
+}
+
+.Personne {
+    margin: 1em;
+}
+
+.blockPersonne {
+    display: flex;
+    margin: 2em;
+}
+
+.imagePersonne {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 1em;
+}
+
+.divMess {
+    display: flex;
+    padding: 4vh;
+    margin: 4vh;
+    justify-content: center;
+    background-color: #d1c797;
+    border-radius: 25px;
+}
+
+.messFlash {
+    font-size: 2em;
+}
