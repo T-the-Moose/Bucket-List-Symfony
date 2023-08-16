@@ -26,10 +26,18 @@
             <div class="nav">
                 {% block nav %}
                     <nav id="nav">
-                    <a  href="{{ path('main.home.html.php') }}">Home</a>
-                    <a  href="{{ path('liste') }}">All wishes</a>
-                    <a  href="{{ path('idee') }}">Add yours !</a>
-                    <a  href="{{ path('about_us') }}">About us</a>
+                        <a  href="{{ path('main.home.html.php') }}">Home</a>
+                        <a  href="{{ path('liste') }}">All wishes</a>
+                        <a  href="{{ path('idee') }}">Add yours !</a>
+                        <a  href="{{ path('about_us') }}">About us</a>
+                        {% if not app.user %}
+                            <a href="{{ path('app_login') }}">Se connecter</a>
+                            <a href="{{ path('app_register') }}">S'enregistrer</a>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <a href="{{ path('app_logout') }}">Se déconnecter - Bonjour {{ app.user.username }} !</a>
+                        {% endif %}
                     </nav>
                 {% endblock %}
             </div>

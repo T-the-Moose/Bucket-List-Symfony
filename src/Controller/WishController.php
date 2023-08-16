@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Wish;
 use App\Form\WishType;
+use App\Repository\AuthorRepository;
+use App\Repository\UserRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,6 +62,7 @@ class WishController extends AbstractController
         '/idee',
         name: 'idee',
     )]
+    #[IsGranted('ROLE_USER')]
     public function formulaire(
         EntityManagerInterface $entityManager,
         Request $requete,
@@ -67,7 +71,6 @@ class WishController extends AbstractController
         $wish = new Wish();
 
         $wishForm = $this->createForm(WishType::class, $wish);
-
         $wishForm->handleRequest($requete);
 
         if($wishForm->isSubmitted() && $wishForm->isValid()) { // isValid() envoi le form quand tous les champs sont remplis
@@ -79,7 +82,7 @@ class WishController extends AbstractController
 
         return $this->render('liste/idee.html.twig', [
             "wishForm" => $wishForm->createView(),
-        ], );
+        ]);
     }
 
 
