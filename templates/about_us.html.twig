@@ -7,22 +7,23 @@
 {% endblock %}
 
 {% block body %}
-    <h2>About Us !</h2>
-
-    <div class="blockPersonne">
-        {% for person in data %}
-            <div class="Personne">
-                <h2>{% if person.firstname == 'Fabien' %}
-                        {{ person.firstname }} {{ person.lastname }}
-                    {% else %}
-                        {{ person.firstname }} {{ person.lastname }}
-                    {% endif %}
-                </h2>
-                <p>Date de naissance: {{ person.dateOfBirth | date('j/m/Y') }}</p>
-                <img class="imagePersonne" src="{{ person.picture }}" alt="{{ person.firstname }} {{ person.lastname }}">
-                <p>{{ person.description }}</p>
-            </div>
-        {% endfor %}
+    <div id="main">
+        <h2>About Us !</h2>
+        <div class="blockPersonne">
+            {% for person in data %}
+                <div class="Personne">
+                    <h2>{% if person.firstname == 'Fabien' %}
+                            {{ person.firstname }} {{ person.lastname }}
+                        {% else %}
+                            {{ person.firstname }} {{ person.lastname }}
+                        {% endif %}
+                    </h2>
+                    <p>Date de naissance: {{ person.dateOfBirth | date('j/m/Y') }}</p>
+                    <img class="imagePersonne" src="{{ person.picture }}" alt="{{ person.firstname }} {{ person.lastname }}">
+                    <p>{{ person.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 

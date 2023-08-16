@@ -7,12 +7,15 @@ use App\Form\WishType;
 use App\Repository\AuthorRepository;
 use App\Repository\UserRepository;
 use App\Repository\WishRepository;
+use App\Services\Censurator;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class WishController extends AbstractController
@@ -66,14 +69,22 @@ class WishController extends AbstractController
     public function formulaire(
         EntityManagerInterface $entityManager,
         Request $requete,
+        UserRepository $userRepository,
+        Censurator $censurator
     ): Response
     {
         $wish = new Wish();
+//        $utilisateur = $userRepository->find($this->getUser()->getUserIdentifier());
+//        $wish->setAuthors($utilisateur);
 
         $wishForm = $this->createForm(WishType::class, $wish);
         $wishForm->handleRequest($requete);
 
         if($wishForm->isSubmitted() && $wishForm->isValid()) { // isValid() envoi le form quand tous les champs sont remplis
+
+            $wish->setTitle($censurator->purify($wish->getTitle())); // Censure des mots interdits dans le titre par le service Censurator
+            $wish->setDescription($censurator->purify($wish->getDescription()));// Censure des mots interdits dans la description par le service Censurator
+
             $entityManager->persist($wish); //Prepare l'insertion dans la BDD
             $entityManager->flush(); //Envoie dans la BDD
             $this->addFlash('success', 'Idea successfully added ! !'); // Ajoute un message flash apres envoi du formulaire
@@ -105,6 +116,25 @@ class WishController extends AbstractController
         $entityManager->flush();
         $this->addFlash('success', 'Wish supprimé avec succès');
         return $this->redirectToRoute('liste');
+    }
+
+    // Création d'une API de récupération des wishes
+    #[Route(
+        '/api/wishes',
+        name: '_wish_json'
+    )]
+    function api(
+        WishRepository $wishRepository,
+        SerializerInterface $serializer
+    ): Response
+    {
+        $wishes = $wishRepository->findAll();
+        return new JsonResponse($serializer->serialize($wishes, 'json', // Serialisation en json
+        ['groups' => 'wishes:read']),
+        200,
+        [],
+        true,
+        );
     }
 
 }
