@@ -41,6 +41,11 @@ class Wish
     #[Groups('wishes:read')]
     private ?bool $realise = null;
 
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+
     public function __serialize() : array
     {
         return [

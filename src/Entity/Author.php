@@ -21,10 +21,16 @@ class Author
     #[ORM\OneToMany(mappedBy: 'authors', targetEntity: Wish::class, orphanRemoval: true)]
     private Collection $wishes;
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->wishes = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {

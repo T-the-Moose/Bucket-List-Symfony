@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Wish;
 use App\Form\WishType;
-use App\Repository\AuthorRepository;
 use App\Repository\UserRepository;
 use App\Repository\WishRepository;
 use App\Services\Censurator;

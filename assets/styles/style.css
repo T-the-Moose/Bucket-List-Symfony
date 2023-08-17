@@ -14,12 +14,11 @@ header {
 #img {
     width: 3em;
     height: 3em;
-    margin-bottom: 3em;
 }
 
 .header {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .logo {
