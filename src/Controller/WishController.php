@@ -24,7 +24,7 @@ class WishController extends AbstractController
         name: 'liste'
     )]
 
-    public function index(
+    public function liste(
         WishRepository $wishRepository,
         HttpClientInterface $client // Injection de dépendance pour Appel API Chuck Norris
     ): Response
@@ -49,7 +49,7 @@ class WishController extends AbstractController
         name: 'liste_detail',
         requirements: ["wish" => "\d+"]
     )]
-    public function index2(
+    public function detail(
         WishRepository $wishRepository,
         $wish
     ): Response
@@ -65,7 +65,7 @@ class WishController extends AbstractController
         name: 'idee',
     )]
     #[IsGranted('ROLE_USER')]
-    public function formulaire(
+    public function idee(
         EntityManagerInterface $entityManager,
         Request $requete,
         UserRepository $userRepository,
@@ -101,7 +101,7 @@ class WishController extends AbstractController
         name: 'supprimer',
         requirements: ["wish" => "\d+"]
     )]
-    public function deleteWish(
+    public function supprimer(
         WishRepository $wishRepository,
         EntityManagerInterface $entityManager,
         $wish
@@ -122,7 +122,7 @@ class WishController extends AbstractController
         '/api/wishes',
         name: '_wish_json'
     )]
-    function api(
+    function apiWish(
         WishRepository $wishRepository,
         SerializerInterface $serializer
     ): Response

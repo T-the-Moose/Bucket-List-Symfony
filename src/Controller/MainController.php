@@ -16,7 +16,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/about_us', name: 'about_us')]
-    public function home2(): Response
+    public function aboutUs(): Response
 
     {
         $jsonData = file_get_contents('json/team.json');
